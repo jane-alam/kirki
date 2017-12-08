@@ -142,7 +142,7 @@ my_config_kirki_add_field(
 		'section'     => 'code_section',
 		'default'     => '',
 		'choices'     => array(
-			'language' => 'css',
+			'language' => 'php',
 			'theme'    => 'monokai',
 		),
 	)

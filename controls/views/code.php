@@ -5,6 +5,7 @@ data = _.defaults( data, {
 	description: '',
 	input_attrs: {}
 });
+#>
 <# var elementIdPrefix = 'el' + String( Math.random() ); #>
 <div class="kirki-input-container" data-id="{{ data.id }}">
 	<# if ( data.label ) { #>

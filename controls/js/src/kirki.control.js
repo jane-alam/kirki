@@ -15,6 +15,51 @@ kirki = jQuery.extend( kirki, {
 		 */
 		'kirki-code': {
 
+			/**
+			 * Init the control.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The customizer control object.
+			 * @returns {null}
+			 */
+			init: function( control ) {
+				var self = this;
+
+				// Render the template.
+				self.template( control );
+
+				var initialize = _.bind( wp.customize.CodeEditorControl.initialize, control, control.id );
+				initialize();
+
+			},
+
+			/**
+			 * Render the template.
+			 *
+			 * @since 3.0.17
+			 * @param {Object} control - The customizer control object.
+			 * @param {Object} control.params - The control parameters.
+			 * @param {string} control.params.label - The control label.
+			 * @param {string} control.params.description - The control description.
+			 * @param {string} control.params.inputAttrs - extra input arguments.
+			 * @param {string} control.params.default - The default value.
+			 * @param {Object} control.params.choices - Any extra choices we may need.
+			 * @param {string} control.id - The setting.
+			 * @returns {null}
+			 */
+			template: function( control ) {
+				var template = wp.template( 'kirki-input-code' );
+				console.log( control );
+				control.container.html( template( {
+					label: control.params.label,
+					description: control.params.description,
+					id: control.id,
+					input_attrs: control.params.input_attrs,
+					'default': control.params['default'],
+					value: kirki.setting.get( control.id ),
+					choices: control.params.choices
+				} ) );
+			}
 		},
 
 		/**
